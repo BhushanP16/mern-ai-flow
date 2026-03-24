@@ -12,7 +12,7 @@ import axios from "axios";
 import InputNode from "./nodes/InputNode";
 import ResultNode from "./nodes/ResultNode";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://mern-ai-flow-backend.onrender.com";
 
 const nodeTypes = {
   inputNode: InputNode,
