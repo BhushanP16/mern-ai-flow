@@ -107,19 +107,17 @@ app.post("/api/save", async (req, res) => {
   try {
     const { prompt, response } = req.body;
 
-    if (!prompt || !response) {
-      return res.status(400).json({ error: "Prompt or Response missing!" });
-    }
+    const newData = new Conversation({
+      prompt,
+      response,
+    });
 
-    // Create a new document and save it
-    const newConversation = new Conversation({ prompt, response });
-    await newConversation.save();
+    await newData.save();
 
-    console.log("💾 Data Saved!");
-    res.json({ message: "✅ Saved to MongoDB!" });
+    res.status(200).json({ message: "Saved successfully" });
   } catch (error) {
-    console.error("❌ Save Error:", error.message);
-    res.status(500).json({ error: "Error while saving!" });
+    console.error("❌ Save Error:", error);
+    res.status(500).json({ error: "Failed to save" });
   }
 });
 
